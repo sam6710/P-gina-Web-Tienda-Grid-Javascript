@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Kenia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Diplomata+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* Body y div principal */
+body{
+    background-color: rgb(240, 240, 240);
+    font-family: 'Roboto', sans-serif;
+}
+#contenedor_principal{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(18, 1fr);
+}
+/* Header */
+header{
+    font-family: 'La Belle Aurore', cursive;
+    grid-area: 1 / 1 / 3 / 13;
+}
+nav{
+    background-color: rgb(200, 200, 200);
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+#logo{
+    grid-area: 1 / 1 / 3 / 4;
+    margin: 0.4rem;
+    margin-top: 2.4rem;
+    width: 60%;
+    border-radius: 1rem;
+}
+#logo:hover{
+    transform: scale(1.2);
+}
+#login{
+    grid-area: 1 / 16 / 2 / 18;
+    position: relative;
+    top: 2rem;
+    left: 1rem;
+    width: 50%;
+}
+#carrito{
+    position: relative;
+    top: 2rem;
+    width: 5rem;
+    grid-area: 1 / 19 / 2 / 20;
+}
+#menu{
+    font-size: 1.3rem;
+    grid-area: 2 / 5 / 3 / 16;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: 1fr;
+}
+ul{
+    list-style: none;
+    position: relative;
+    bottom: 1.3rem;
+}
+#mujer{
+    grid-area: 1 / 1 / 2 / 3;
+}
+#hombre{
+    grid-area: 1 / 4 / 2 / 6;
+}
+#joyeria{
+    grid-area: 1 / 7 / 2 / 9;
+}
+#accesorios{
+    grid-area: 1 / 10 / 2 / 12;
+}
+span{
+    text-decoration: none;
+    color: purple;
+}
+#menu span:hover{
+    color: white;
+}
+#menu span:active{
+    text-shadow: 0.5rem 0.4rem 0.4rem black;
+    color: wheat;
+}
+/* Main */
+main{
+    grid-area: 3 / 1 / 19 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+}
+#hero{
+    display: flex;
+    grid-area: 5 / 1 / 10 / -1;
+    color: hotpink;
+    padding: 0.4rem;
+    font-size: 1.4rem;
+    height: 80%;
+    font-family: 'Josefin Sans', sans-serif;
+}
+#hero h2{
+    position: relative;
+    bottom: 2rem;
+    left: 1rem;
+    border-right: .05em solid hotpink;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 1.2s steps(12) 1s 1 normal both, blink 1s steps(1) infinite;
+    font-family: 'Diplomata SC', cursive;
+}
+#hero p{
+    position: relative;
+    bottom: 1rem;
+    left: 2rem;
+    width: 86%;
+    font-size: 1.2rem;
+    color: black;
+}
+#hero_img{
+    width: 55%;
+}
+#flores, #capucha{
+    width: 46%;
+}
+#vibes{
+    position: relative;
+    top: 3rem;
+    left: 1rem;
+    width: 44%;
+}
+#flores{
+    position: relative;
+    bottom: 24.4rem;
+    left: 20.55rem;
+}
+#capucha{
+    position: relative;
+    top: 3rem;
+    left: 1.8rem;
+}
+#hero_cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 45%;
+}
+/* Animación maquina de escribir */
+@keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+}
+@keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 87.3%;
+    }
+}
+#siguenos{
+    grid-area: 10 / 1 / 17 / 13;
+    font-family: 'Josefin Sans', sans-serif;
+}
+#siguenos p{
+    text-decoration: overline underline;
+}
+.contenedor_red{
+    display: flex;
+    width: 20%;
+}
+#siguenos a img{
+    height: 4rem;
+}
+#siguenos #twitter{
+    position: relative;
+    top: 2rem;
+    left: 1.2rem
+}
+#siguenos #instagram{
+    position: relative;
+    top: 17rem;
+    left: 1.2rem;
+}
+#siguenos #github{
+    position: relative;
+    top: -6.4rem;
+    left: 20rem;
+    color: black;
+    display: flex;
+    flex-direction: row-reverse;
+}
+#siguenos #yt{
+    position: relative;
+    top: 8.6rem;
+    left: 20rem;
+    color: black;
+    display: flex;
+    flex-direction: row-reverse;
+}
+#p_sig{
+    position: relative;
+    left: 13rem;
+    bottom: 5rem;
+    font-size: 2rem;
+}
+#siguenos span{
+    display: none;
+    color: white;
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-left: 0.4rem;
+    color: black;
+}
+#siguenos div img:hover{
+    animation: 1s rotate linear;
+}
+#siguenos div img:not(:hover){
+    animation: 1s rotate-inv linear;
+}
+#siguenos a:hover ~ span:nth-child(2){
+    display: block;
+    animation: 1.6s appear linear;
+}
+#columna_sig{
+    position: relative;
+    left: 45rem;
+    bottom: 15.5rem;
+}
+#escultura_sig{
+    position: relative;
+    left: 45rem;
+    bottom: 15.5rem;
+}
+#siguenos > img{
+    height: 20rem;
+}
+/* Animación de las iamgenes de rdes cocciales */
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);
+    }
+}
+@keyframes rotate-inv {
+    from {transform: rotate(360deg);}
+    to {transform: rotate(0deg);
+    }
+}
+@keyframes appear{
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+@keyframes desappear {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+}
+#carrusel{
+    grid-area: 1 / 1 / 5 / 13;
+    margin-top: 1rem;
+    max-width: 80%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+#logo_carrusel{
+    margin-top: 6rem;
+    width: 200px;
+    height: 6rem;
+    transform: rotate(300deg);
+    grid-area: 1 / 1 / 3 / 2;
+}
+#img_carrusel{
+    width: 100%;
+    height: 300px;
+    background-repeat: no-repeat;
+    margin-left: 15%;
+    grid-area: 1 / 2 / 3 / 10;
+}
+#img_carrusel img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2rem;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+}
+#productos{
+    grid-area: 10 / 1 / 17 / 13;
+}
+.div_principal{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+.div_producto{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 1rem;
+    margin-bottom: 3rem;
+    border: 1px solid black;
+    border-top-left-radius: 1.4rem;
+    border-bottom-right-radius: 1.4rem;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: rgb(220, 220, 220);
+}
+.div_producto img{
+    width: 90%;
+    margin-left: 5%;
+    max-height: 70%;
+    border-radius: 1rem;
+}
+.div_producto h3{
+    margin-left: 2.4rem;
+    margin-right: 2.4rem;
+}
+.div_producto p{
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+.div_producto:hover{
+    text-decoration: underline;
+}
+.div_producto:hover img{
+    transform: scale(0.9);
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.2) 10px 10px, rgba(240, 46, 170, 0.1) 15px 15px;
+}
+/* Footer */
+footer{
+    font-family: 'Chakra Petch', sans-serif;
+    grid-area: 17 / 1 / 19 / 13;
+    background-color: rgb(200, 200, 200);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+h3{
+    margin-top: 1.4rem;
+    margin-bottom: 1.6rem;
+}
+footer a{
+    margin-bottom: 0.6rem;
+    text-decoration: none;
+    color: black;
+}
+footer a:hover{
+    color: hotpink;
+}
+#ayuda{
+    grid-area: 1 / 1 / 3 / 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+#nosotros{
+    grid-area: 1 / 2 / 3 / 3;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+#legal{
+    grid-area: 1 / 3 / 3 / 4;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+#metodos{
+    grid-area: 1 / 4 / 2 / 6;
+    text-align: center;
+}
+#metodos i{
+    font-size: 2rem;
+    margin-top: -1rem;
+}
+#redes_footer{
+    grid-area: 2 / 4 / 3 / 6;
+    text-align: center;
+}
+.red_social{
+    width: 4rem;
+    margin: 0.2rem;
+    padding-bottom: 1rem;
+}
