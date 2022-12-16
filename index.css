@@ -76,7 +76,7 @@ ul{
 #accesorios{
     grid-area: 1 / 10 / 2 / 12;
 }
-span{
+nav ul span{
     text-decoration: none;
     color: purple;
 }
@@ -136,7 +136,7 @@ main{
 #flores{
     position: relative;
     bottom: 24.4rem;
-    left: 20.55rem;
+    left: 20.2rem;
 }
 #capucha{
     position: relative;
@@ -308,6 +308,7 @@ main{
 .div_producto{
     display: flex;
     flex-direction: column;
+    text-align: center;
     width: 30%;
     margin: 1rem;
     margin-bottom: 3rem;
@@ -337,6 +338,106 @@ main{
 .div_producto:hover img{
     transform: scale(0.9);
     box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.2) 10px 10px, rgba(240, 46, 170, 0.1) 15px 15px;
+}
+.div_info{
+    width: 50%;
+    position: relative;
+    left: 15%;
+    top: 6rem;
+}
+#price{
+    position: relative;
+    top: 8%;
+    font-size: 1.2rem;
+    color: red;
+}
+#rating, #reviews{
+    position: relative;
+    top: 12%;
+    font-size: 1.2rem;
+}
+.div_info #talla{
+    position: relative;
+    top: 21%;
+    right: 16%;
+    font-size: 1.2rem;
+}
+.div_info select{
+    position: relative;
+    top: 21%;
+    right: 15%;
+    height: 2rem;
+    font-size: 1.2rem;
+}
+.div_info button{
+    position: relative;
+    top: 33%;
+    right: 32%;
+    height: 3rem;
+    width: 10rem;
+    font-size: 1.2rem;
+    border: 1px solid hotpink;
+    background-color: rgb(220, 220, 220);
+    border-radius: 0.5rem;
+}
+/* Login */
+.div_login{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    right: 15%;
+}
+.div_registro{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 15%;
+}
+input{
+    margin-top: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: 2px solid rgb(180, 180, 180);
+    padding: 0.2rem;
+}
+.div_login button, .div_registro button{
+    margin-top: 1rem;
+    border-radius: 0.2rem;
+    background-color: rgb(180, 180, 180);
+    color: white;
+}
+/* Carrito */
+.div_carrito{
+    display: flex;
+}
+.div_carrito ul{
+    position: relative;
+    top: 6rem;
+    left: 2rem;
+    text-align: left;
+    width: 75%;
+}
+li img{
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+.div_carrito li span{
+    position: relative;
+    bottom: 3.5rem;
+    left: 2rem;
+}
+.fa-trash{
+    position: relative;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 2rem;
+}
+.div_compra{
+    width: 25%;
+    position: relative;
+    top: 12rem;
 }
 /* Footer */
 footer{
