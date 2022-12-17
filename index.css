@@ -240,7 +240,7 @@ main{
 #siguenos > img{
     height: 20rem;
 }
-/* Animación de las iamgenes de rdes cocciales */
+/* Animación de las iamgenes de redes cocciales */
 @keyframes rotate {
     from {transform: rotate(0deg);}
     to {transform: rotate(360deg);
@@ -533,4 +533,242 @@ footer a:hover{
     width: 4rem;
     margin: 0.2rem;
     padding-bottom: 1rem;
+}
+
+
+/* Media Query */
+@media screen and (min-width:1400px){
+    #flores{
+        left: 22.8rem;
+        bottom: 28.4rem;
+    }
+    #columna_sig{
+        left: 55rem;
+    }
+    #escultura_sig{
+        left: 55rem;
+    }
+    @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 77%;
+        }
+    }
+}
+@media screen and (min-width:1920px){
+    #flores{
+        left: 30.8rem;
+        bottom: 40rem;
+    }
+    #columna_sig{
+        left: 72rem;
+    }
+    #escultura_sig{
+        left: 78rem;
+    }
+    #contenedor_principal{
+        grid-template-rows: repeat(20, 1fr);
+    }
+    footer{
+        grid-area: 19 / 1 / 21 / 13;
+    }
+    .div_carrito ul{
+        left: 6rem;
+    }
+    @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 56%;
+        }
+    }
+}
+@media screen and (max-width: 1000px){
+    #carrito{
+        width: 3.8rem;
+    }
+    #flores{
+        left: 16.75rem;
+        bottom: 19.4rem;
+    }
+    #hero h2{
+        font-size: 1.5rem;
+    }
+    @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 77%;
+        }
+    }
+    #columna_sig{
+        left: 34rem;
+    }
+    #escultura_sig{
+        left: 34rem;
+    }
+    .div_orden select{
+        width: 8.4rem;
+    }
+    .div_orden button{
+        width: 5rem;
+    }
+}
+@media screen and (max-width: 600px){
+    body{
+        width: 134%;
+    }
+    #logo{
+        margin-bottom: 2rem;
+    }
+    #login{
+        margin-left: 1rem;
+    }
+    #carrito{
+        width: 3.5rem;
+    }
+    #img_carrusel img{
+        width: 130%;
+    }
+    #flores{
+        left: 13.8rem;
+        bottom: 15rem;
+    }
+    #hero h2{
+        font-size: 1.2rem;
+    }
+    #p_sig{
+        left: 6rem;
+    }
+    #siguenos #github{
+        left: 12rem;
+    }
+    #siguenos #yt{
+        left: 12rem;
+    }
+    #columna_sig{
+        left: 23rem;
+    }
+    #escultura_sig{
+        left: 23rem;
+    }
+    #contenedor_principal{
+        grid-template-rows: repeat(20, 1fr);
+    }
+    footer{
+        grid-area: 19 / 1 / 21 / 13;
+    }
+}
+
+@media screen and (max-width: 400px){
+    body{
+        width: 100%;
+    }
+    nav ul span{
+        font-size: 0.8rem;
+    }
+    #logo{
+        width: 3.4rem;
+    }
+    #carrito{
+        width: 1.6rem;
+    }
+    .div_carrito{
+        margin-top: 2rem;
+    }
+    .div_carrito ul{
+        left: 0.4rem;
+        width: 50%;
+    }
+    .div_carrito ul h3{
+        font-size: 1rem;
+    }
+    .div_compra{
+        left: 2rem;
+    }
+    #metodos{
+        position: relative;
+        top: 3rem;
+    }
+    #redes_footer{
+        position: relative;
+        right: 7rem;
+    }
+    #contenedor_principal{
+        grid-template-rows: repeat(18, 1fr);
+    }
+    .div_login{
+        top: 10rem;
+        right: 0.4rem;
+    }
+    .div_registro{
+        top: 10rem;
+        left: 0.4rem;
+    }
+    #siguenos #github{
+        left: 20rem;
+    }
+    #siguenos #yt{
+        left: 20rem;
+    }
+    #p_sig{
+        left: 8rem;
+    }
+    #columna_sig{
+        width: 50%;
+        left: 0rem;
+        top: 12rem;
+    }
+    #escultura_sig{
+        width: 50%;
+        left: 0rem;
+        top: 12rem;
+    }
+    footer{
+        margin-top: 8rem;
+    }
+    #hero{
+        flex-direction: column;
+    }
+    #hero_img{
+        width: 100%;
+    }
+    #hero_cont{
+        width: 100%;
+        margin-top: 2rem;
+    }
+    #flores{
+        left: 12.45rem;
+        bottom: 13rem;
+    }
+    @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 71%;
+        }
+    }
+    #carrusel{
+        display: flex;
+        flex-direction: column;
+        margin-top: -7rem;
+    }
+    #logo_carrusel{
+        margin-left: 5rem;
+    }
+    #img_carrusel{
+        margin-top: 4rem;
+        width: 76%;
+    }
+    .div_principal{
+        margin-top: -6rem;
+    }
+    .div_producto{
+        width: 100%;
+    }
 }
