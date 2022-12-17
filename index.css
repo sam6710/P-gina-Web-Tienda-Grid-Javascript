@@ -305,6 +305,32 @@ main{
     justify-content: center;
     text-align: center;
 }
+.div_orden{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.div_orden select{
+    width: 12%;
+    height: 2.2rem;
+    margin-bottom: 0.4rem;
+    border-radius: 0.6rem;
+    border: 1px solid black;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.2rem;
+    background-color: rgb(220, 220, 220);
+}
+.div_orden button{
+    width: 6%;
+    height: 2rem;
+    border-radius: 0.6rem;
+    border: 1px solid hotpink;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1rem;
+    background-color: rgb(220, 220, 220);
+}
 .div_producto{
     display: flex;
     flex-direction: column;
@@ -438,6 +464,19 @@ li img{
     width: 25%;
     position: relative;
     top: 12rem;
+}
+#total{
+    font-size: 1.2rem;
+}
+#btn_comprar{
+    margin-top: 1rem;
+    border-radius: 0.2rem;
+    height: 2rem;
+    width: 6rem;
+    font-size: 1.2rem;
+    border: 1px solid hotpink;
+    background-color: rgb(220, 220, 220);
+    border-radius: 0.5rem;
 }
 /* Footer */
 footer{

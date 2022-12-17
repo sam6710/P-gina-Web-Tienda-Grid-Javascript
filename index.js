@@ -1,7 +1,3 @@
-// import {carrito} from "./carrito.js";
-
-// const carrito = carrito();
-
 const TIEMPO_INTERVALO_MILESIMAS_SEG = 4000;
 
 const IMAGENES = [
@@ -79,6 +75,44 @@ const montarCategoria = (productos) => {
     let div_principal = document.createElement("div");
     div_principal.className = "div_principal";
     $("div_principal").css("display", "flex");
+    let select = document.createElement("select");
+    select.className = "select";
+    select.innerHTML = "<option value=''>Ordenar por</option><option value='asc'>Ascendent</option><option value='desc'>Descendente</option>";
+    let button = document.createElement("button");
+    button.className = "button";
+    button.innerHTML = "Ordenar";
+    let div_orden = document.createElement("div");
+    div_orden.className = "div_orden";
+    div_principal.append(div_orden);
+    button.addEventListener("click", function(){
+        let select = document.getElementsByClassName("select")[0];
+        let valor = select.value;
+        if(valor == "asc"){
+            productos.sort(function(a, b){
+                if(a.price > b.price){
+                    return 1;
+                }
+                if(a.price < b.price){
+                    return -1;
+                }
+                return 0;
+            });
+        }
+        else if(valor == "desc"){
+            productos.sort(function(a, b){
+                if(a.price < b.price){
+                    return 1;
+                }
+                if(a.price > b.price){
+                    return -1;
+                }
+                return 0;
+            });
+        }
+        montarCategoria(productos);
+    });
+    div_orden.append(button);
+    div_orden.append(select);
     $("main").append(div_principal);
     for(let i = 0; i < productos.length; i++){
         let producto = productos[i];
@@ -141,7 +175,7 @@ function mostrarLogin(){
     div_principal.append(div_login);
     let div_registro = document.createElement("div");
     div_registro.className = "div_registro";
-    div_registro.innerHTML = "<h3>Registro</h3><input type='text' placeholder='Nombre'><input type='text' placeholder='Usuario'><input type='password' placeholder='Contraseña'><input type='email' placeholder='Email'><button id='btn_registro'>Registrarse</button>";
+    div_registro.innerHTML = "<h3>Registro</h3><input type='text' placeholder='Nombre' required><input type='text' placeholder='Usuario' required><input type='password' placeholder='Contraseña' required pattern='^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$'><input type='email' placeholder='Email' required><button id='btn_registro'>Registrarse</button>";
     div_principal.append(div_registro);
     $("main").css("display", "flex");
     $(".div_principal").css("width", "100%");
@@ -149,19 +183,51 @@ function mostrarLogin(){
 
 function eventoBtnCarrito(producto){
     $("#btn_add_carrito").on("click", function(){
-        console.log("Producto añadido al carrito");
         añadirProducto(producto);
     });
 }
 
 function añadirProducto(producto){
-    if(localStorage.carrito != null)
+    if(localStorage.carrito != null){
         var carrito = JSON.parse(localStorage.getItem("carrito"))
-    else
+        carrito.push(producto);
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+    else{
         var carrito = [];
-    carrito.push(producto);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    console.log(carrito);
+        carrito.push(producto);
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+
+
+    // var producto = {
+    //     id: producto.id,
+    //     title: producto.title,
+    //     image: producto.image,
+    //     price: producto.price,
+    //     cantidad: 1
+    // }
+    // if(localStorage.carrito != null){
+    //     var carrito = JSON.parse(localStorage.getItem("carrito"))
+    //     for(let i = 0; i < carrito.length; i++){
+    //         if(carrito[i].id == producto.id){
+    //             carrito[i].cantidad++;
+    //             console.log(carrito[i].cantidad);
+    //             localStorage.setItem("carrito", JSON.stringify(carrito));
+    //             // return;
+    //         }
+    //         else{
+    //             cantidad = 1;
+    //             carrito.push(producto);
+    //             localStorage.setItem("carrito", JSON.stringify(carrito));
+    //         }
+    //     }
+    // }
+    // else{
+    //     var carrito = [];
+    //     carrito.push(producto);
+    //     localStorage.setItem("carrito", JSON.stringify(carrito));
+    // }
 }
 
 function mostrarCarrito(){
@@ -178,15 +244,17 @@ function mostrarCarrito(){
     if(localStorage.carrito != null){
         let carrito = JSON.parse(localStorage.getItem("carrito"));
         let ul = document.createElement("ul");
+        var total = 0;
         carrito.forEach(producto => {
             let li = document.createElement("li");
             li.innerHTML = "<img src=" + producto.image + "><span>" + producto.price + "₤</span><i class='fa fa-trash'></i><h3>" + producto.title + "</h3>";
+            total += producto.price;
             ul.append(li);
             div_carrito.append(ul);
         });
         let div_compra = document.createElement("div");
         div_compra.className = "div_compra"
-        div_compra.innerHTML = "<p>Total:</p><button id='btn_comprar'>Comprar</button>";
+        div_compra.innerHTML = "<p id='total'>Total:" + total + "¥</p><button id='btn_comprar'>Comprar</button>";
         div_carrito.append(div_compra);
     }
     else{
@@ -198,4 +266,37 @@ function mostrarCarrito(){
     $("main").css("display", "flex");
     $(".div_principal").css("width", "100%");
     $(".div_principal").css("display", "block");
+
+    eventoEliminarProducto();
+    eventoBtnComprar();
+}
+
+function eventoEliminarProducto(){
+    $(".fa-trash").on("click", function(){
+        eliminarProducto(this);
+    });
+}
+
+function eliminarProducto(elemento){
+    let carrito = JSON.parse(localStorage.getItem("carrito"));
+    let indice = $(elemento).parent().index();
+    carrito.splice(indice, 1);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    mostrarCarrito();
+}
+
+function eventoBtnComprar(){
+    $("#btn_comprar").on("click", function(){
+        mostrarCompra();
+    });
+}
+
+function mostrarCompra(){
+    $("main").html("");
+    let h1 = document.createElement("h1");
+    h1.innerHTML = "¡¡¡Simulación de compra realizada!!!";
+    $("main").append(h1);
+    $("h1").css("position", "relative");
+    $("h1").css("top", "12%");
+    $("h1").css("left", "33%");
 }
