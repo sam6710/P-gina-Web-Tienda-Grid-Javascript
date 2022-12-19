@@ -171,15 +171,35 @@ function mostrarLogin(){
     $("main").append(div_principal);
     let div_login = document.createElement("div");
     div_login.className = "div_login";
-    div_login.innerHTML = "<h3>Inicio de sesión</h3><input type='text' placeholder='Usuario'><input type='password' placeholder='Contraseña'><button id='btn_login'>Iniciar sesión</button>";
+    div_login.innerHTML = "<h3>Inicio de sesión</h3><form><input type='text' placeholder='Usuario'><input type='password' placeholder='Contraseña'><button id='btn_login'>Iniciar sesión</button></form>";
     div_principal.append(div_login);
     let div_registro = document.createElement("div");
     div_registro.className = "div_registro";
-    div_registro.innerHTML = "<h3>Registro</h3><input type='text' placeholder='Nombre' required><input type='text' placeholder='Usuario' required><input type='password' placeholder='Contraseña' required pattern='^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$'><input type='email' placeholder='Email' required><button id='btn_registro'>Registrarse</button>";
+    div_registro.innerHTML = "<h3>Registro</h3><form id='form'><input type='text' placeholder='Nombre' name='nombre' required><input type='text' placeholder='Usuario' name='usuario' required><input type='password' placeholder='Contraseña' name='contraseña' required><input type='email' name='email' placeholder='Email' required><button id='btn_registro'>Registrarse</button></form><script type='text/javascript'src='https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js'></script><script type='text/javascript'>emailjs.init('TPdvkm1SBySbm-OnS')</script>";
     div_principal.append(div_registro);
     $("main").css("display", "flex");
     $(".div_principal").css("width", "100%");
 }
+
+
+// MailJs
+const btn = document.getElementById('btn_registro');
+
+document.getElementById('btn_registro').addEventListener('click', function(event){
+   event.preventDefault();
+   btn.value = 'Enviando...';
+   const serviceID = 'default_service';
+   const templateID = 'template_fchhpli';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Registrarse';
+    }, (err) => {
+      btn.value = 'Registrarse';
+      alert(JSON.stringify(err));
+    });
+});
+
 
 function eventoBtnCarrito(producto){
     $("#btn_add_carrito").on("click", function(){

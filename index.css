@@ -12,6 +12,7 @@
 body{
     background-color: rgb(240, 240, 240);
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
 #contenedor_principal{
     display: grid;
@@ -420,6 +421,7 @@ main{
     left: 15%;
 }
 input{
+    display: flex;
     margin-top: 2rem;
     height: 2rem;
     border-radius: 0.5rem;
