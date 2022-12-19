@@ -175,30 +175,61 @@ function mostrarLogin(){
     div_principal.append(div_login);
     let div_registro = document.createElement("div");
     div_registro.className = "div_registro";
-    div_registro.innerHTML = "<h3>Registro</h3><form id='form'><input type='text' placeholder='Nombre' name='nombre' required><input type='text' placeholder='Usuario' name='usuario' required><input type='password' placeholder='Contraseña' name='contraseña' required><input type='email' name='email' placeholder='Email' required><button id='btn_registro'>Registrarse</button></form><script type='text/javascript'src='https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js'></script><script type='text/javascript'>emailjs.init('TPdvkm1SBySbm-OnS')</script>";
+    div_registro.innerHTML = "<h3>Registro</h3><form id='form'><input type='text' placeholder='Nombre' name='nombre' id='f_nombre' required><input type='text' placeholder='Usuario' name='usuario' id='f_usuario' required><input type='password' placeholder='Contraseña' name='contraseña' id='f_contraseña' required><input type='email' name='email' id='f_email' placeholder='Email' required><input type='submit' id='btn_registro' value='Registrarse'></form>";
     div_principal.append(div_registro);
     $("main").css("display", "flex");
     $(".div_principal").css("width", "100%");
-}
+    eventoEmail();}
 
 
 // MailJs
-const btn = document.getElementById('btn_registro');
 
-document.getElementById('btn_registro').addEventListener('click', function(event){
-   event.preventDefault();
-   btn.value = 'Enviando...';
-   const serviceID = 'default_service';
-   const templateID = 'template_fchhpli';
-
-   emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-      btn.value = 'Registrarse';
-    }, (err) => {
-      btn.value = 'Registrarse';
-      alert(JSON.stringify(err));
+function eventoEmail(){
+    $("#btn_registro").on("click", () => {
+        enviarEmail($("#f_nombre").val(),$("#f_usuario").val(),$("#f_contraseña").val(),$("#f_email").val());
     });
-});
+}
+
+function enviarEmail(nombre, usuario, contraseña, email){
+    emailjs.send("service_zprp43b", "template_fchhpli", {
+        from_name: "Tienda de ropa",
+        nombre: nombre,
+        usuario: usuario,
+        contraseña: contraseña,
+        email: email,
+    }).then(response => {
+        console.log("success", response.status);
+s        // $("#p2-registro-respuesta").text("Correo enviado con éxito");
+        $("#f_usuario").val("");
+        $("#f_nombre").val("");
+        $("#f_contraseña").val("");
+        $("#f_email").val("");
+
+    }, (error) => {
+        console.log(error);
+        $("#p-registro-respuesta").text("Registro fallido, revise los datos");
+        $("#p2-registro-respuesta").text("Correo no enviado");
+    })
+}
+//     const btn = document.getElementById('btn_registro');
+//     var form = document.getElementById('form');
+
+//     form.addEventListener('submit', function(event){
+//     event.preventDefault();
+//     btn.value = 'Enviando...';
+//     const serviceID = 'service_zprp43b';
+//     const templateID = 'template_fchhpli';
+
+//     emailjs.sendForm(serviceID, templateID, this)
+//         .then(() => {
+//         btn.value = 'Registrarse';
+//         }, (err) => {
+//         btn.value = 'Registrarse';
+//         alert(JSON.stringify(err));
+//         });
+//     });
+// }
+
 
 
 function eventoBtnCarrito(producto){

@@ -428,7 +428,9 @@ input{
     border: 2px solid rgb(180, 180, 180);
     padding: 0.2rem;
 }
-.div_login button, .div_registro button{
+.div_login button, #btn_registro{
+    padding: 0.2rem;
+    border: solid 2px black;
     margin-top: 1rem;
     border-radius: 0.2rem;
     background-color: rgb(180, 180, 180);
